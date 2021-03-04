@@ -10,8 +10,11 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "leaflet": "^1.7.1",
     "nuxt": "^2.14.12",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "vue-good-table": "^2.21.7",
+    "vue2-leaflet": "^2.6.0"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^3.4.2",

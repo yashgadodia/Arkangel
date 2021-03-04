@@ -27,6 +27,65 @@ Vue.mixin({
 
       return res;
     },
+
+    /**
+     * Onboarding requests:
+     - get all requests
+     - get requests by status (new/pending/resolved)
+     - get requests by id
+
+     - create new request
+     - update request parameters (id, full name, address, dob, emergency contact, id photo, status)
+     - delete request by id
+
+     For the report history
+     -get all report history
+     -get user details by user id
+     -delete report
+     -update report
+     -get report by user id
+     */
+    databaseQuery(reference = 'users', filters) {
+      if (!reference)
+        throw error('Oi');
+
+      let ref = this.$fire.database.ref(reference);
+
+      // FilterItem = { key: '', value: '' }
+      if (filters) {
+        filters.forEach((filterItem) => {
+          ref = ref.orderByChild(filterItem.key);
+
+          if (filterItem.value)
+            ref = ref.equalTo(filterItem.value);
+        });
+      }
+
+      let res = {}
+
+      ref.on('value', (snapshot) => {
+        res = snapshot.val();
+      });
+
+      return res;
+    },
+    users(id = null, onboardLv = -1) {
+      let ref = this.$fire.database.ref('users');
+
+      if (id)
+        ref = ref.orderByKey().equalTo(id);
+
+      if (onboardLv > -1)
+        ref = ref.orderByChild('onboardLv').equalTo(onboardLv);
+
+      let res = {}
+
+      ref.on('value', (snapshot) => {
+        res = snapshot.val();
+      });
+
+      return res;
+    }
   }
 })
 

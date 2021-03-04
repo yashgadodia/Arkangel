@@ -33,7 +33,7 @@
         <h2 class="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
                 xl:text-bold">Log in</h2>
         <div class="mt-12">
-          <form @submit.prevent="handleLogin">
+          <form>
             <div>
               <div class="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
               <input v-model="email"
@@ -57,7 +57,7 @@
                      type="password" placeholder="Enter your password">
             </div>
             <div class="mt-10">
-              <button type="submit" class="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
+              <button @click="handleLogin" type="submit" class="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
                             font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
                             shadow-lg">
                 Log In
@@ -89,20 +89,47 @@ export default {
   },
   components: {},
   methods: {
-    handleLogin() {
-      let superusers = this.databaseQuery('superuser');
 
-      superusers.forEach((sUser) => {
-        if (sUser.key === this.email && sUser.val().password === this.password)
-          this.$router.push({path: "/Home"})
-      });
+    testRedirect() {
+        this.$router.push("/Home");
+    },
+
+    handleLogin(e) {
+        e.preventDefault()
+
+      let superusers = this.databaseQuery('superuser');
+      
+        for (const user of superusers) {
+            const { email, password } = this
+            console.log(typeof user.val().Password)
+            console.log(typeof password)
+            if (user.key == email && user.val().Password == password) {
+                this.$router.push("/Home")
+                console.log(user.val().Password, user.key)
+            }
+
+
+        }
+
+    //   let loggedIn = false;
+    //   let thisEmail = this.email;
+    //   let thisPassword = this.password;
+
+    //   superusers.forEach((sUser) => {
+    //     if (sUser.key === thisEmail && sUser.val().password === thisPassword)
+    //       loggedIn = true;
+    //   });
+    //     if (loggedIn)
+    //         this.$router.push("/Home");
+
+    //     console.log(loggedIn)
 
       // if (superusers[this.email])
       //   this.$router.push({path: "/Home"})
       // else
       //   alert("Incorrect username or password. Please try again.")
     }
-  }
+  },
 }
 </script>
 

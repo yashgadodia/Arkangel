@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar />
-    <div class="mx-auto px-4 mt-16">
+    <div class="px-4 mt-16 mx-10">
         <div class="grid grid-flow-col grid-cols-3 gap-4 mt-20 mb-9">
             <div><CardStats statSubtitle="New Requests" statTitle="345"/></div>
             <div><CardStats statSubtitle="Pending Resolution" statTitle="148" statIconColor="bg-yellow-400" /></div>
@@ -15,7 +15,7 @@
             <div>Emergency Contact</div>
             <div>Photo</div>
         </div>
-        <div class="pt-3" v-for="request in this.rows" :key="request.id">
+        <div class="pt-3" v-for="request in this.requests" :key="request.id">
             <report-item
                 :id="request.id"
                 :fullname="request.fullname"
@@ -35,7 +35,7 @@ import 'vue-good-table/dist/vue-good-table.css'
 import { VueGoodTable } from 'vue-good-table';
 import Navbar from "../components/Navbar.vue"
 import CardStats from '../components/CardStats.vue'
-// import axios from 'axios'
+import axios from 'axios'
 
 export default {
     name: "Onboarding",
@@ -85,8 +85,8 @@ export default {
         }
     },
     mounted() {
-        // axios.get('https://run.mocky.io/v3/b1e7a249-a37c-4609-ba29-92e11d313cbd').then(response => (this.requests = response))
-        // console.log(this.requests)
+        axios.get('https://run.mocky.io/v3/1bdc3cbb-c47c-4978-aaaa-0bd99c06afde').then(response => (this.requests = response))
+        console.log(this.requests)
     },
     components: {
         VueGoodTable,

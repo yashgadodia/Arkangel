@@ -1,5 +1,4 @@
 <template>
-<!--  <Button @click="rpcCall">Write to Realtime DB</Button>-->
     <div class="lg:flex">
         <div class="lg:w-1/2 l:max-w-screen-sm">
             <div class="py-12 bg-indigo-100 lg:bg-white flex justify-center lg:justify-start lg:px-12">
@@ -78,11 +77,12 @@ export default {
   },
   methods: {
     handleLogin: function() {
-      if (this.email === "admin@arkangel.com" && this.password==="123") this.$router.push({path: "/Home"})
-      else alert("Incorrect username or password. Please try again.")
-    },
-    rpcCall() {
-      this.rpc('b', 'test',{})
+      let superusers = this.databaseQuery('superuser');
+
+      if (this.email in superusers.keys() && superusers[this.email].password === this.password)
+        this.$router.push({path: "/Home"})
+      else
+        alert("Incorrect username or password. Please try again.")
     }
   }
 }

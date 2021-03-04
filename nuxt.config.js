@@ -27,10 +27,6 @@ export default {
     emulatorHost: 'localhost',
   },
 
-  env: {
-    FIRE_ENV: process.env.FIRE_ENV
-  },
-
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/fireark.js' }
@@ -49,10 +45,14 @@ export default {
   firebase: {
     lazy: false,
     config: {
-      apiKey: 'AIzaSyDa-YwgWTp2GDyVYEfv-XLb62100_HoEvU',
-      projectId: 'nuxt-fire-demo',
-      storageBucket: 'nuxt-fire-demo.appspot.com',
-      appId: '1:807370470428:web:26da98c86c3fd352',
+      apiKey: process.env.apiKey,
+      authDomain: process.env.authDomain,
+      databaseURL: process.env.databaseURL,
+      projectId: process.env.projectId,
+      storageBucket: process.env.storageBucket,
+      messagingSenderId: process.env.messagingSenderId,
+      appId: process.env.appId,
+      measurementId: process.env.measurementId,
     },
     onFirebaseHosting: false,
     terminateDatabasesAfterGenerate: true,

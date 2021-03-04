@@ -10,7 +10,6 @@ Vue.mixin({
     rpc(target, method, payload) {
       if (!target)
         return { success: false, msg: "Invalid target" };
-      
       let res = {};
       this.$fire.database.ref('rpc/' + target + '/' + this.uuidv4()).set({
         method: method,

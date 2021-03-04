@@ -28,7 +28,7 @@
                     <form>
                         <div>
                             <div class="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
-                            <input v-model="email" class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="" placeholder="mike@gmail.com" />
+                            <input v-model="email" class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="" placeholder="mike@gmail.com">
                         </div>
                         <div class="mt-8">
                             <div class="flex justify-between items-center">
@@ -42,7 +42,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <input v-model="password" class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="password" placeholder="Enter your password" />
+                            <input v-model="password" class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="password" placeholder="Enter your password">
                         </div>
                         <div class="mt-10">
                             <button class="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
@@ -69,11 +69,9 @@
 <script>
 export default {
   name: "Login",
-  data: function() {
-    return {
-      email: "",
-      password: ""
-    }
+  data: {
+    email: "",
+    password: ""
   },
   components: {
 

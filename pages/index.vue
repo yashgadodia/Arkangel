@@ -1,5 +1,4 @@
 <template>
-<!--  <Button @click="rpcCall">Write to Realtime DB</Button>-->
     <div class="lg:flex">
         <div class="lg:w-1/2 l:max-w-screen-sm">
             <div class="py-12 bg-indigo-100 lg:bg-white flex justify-center lg:justify-start lg:px-12">
@@ -28,7 +27,7 @@
                     <form>
                         <div>
                             <div class="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
-                            <input v-model="email" class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="" placeholder="mike@gmail.com" />
+                            <input v-model="email" class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="" placeholder="mike@gmail.com">
                         </div>
                         <div class="mt-8">
                             <div class="flex justify-between items-center">
@@ -42,7 +41,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <input v-model="password" class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="password" placeholder="Enter your password" />
+                            <input v-model="password" class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="password" placeholder="Enter your password">
                         </div>
                         <div class="mt-10">
                             <button class="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
@@ -69,7 +68,7 @@
 <script>
 export default {
   name: "Login",
-  data: function() {
+  data: function () {
     return {
       email: "",
       password: ""
@@ -80,11 +79,12 @@ export default {
   },
   methods: {
     handleLogin: function() {
-      if (this.email === "admin@arkangel.com" && this.password==="123") this.$router.push({path: "/Home"})
-      else alert("Incorrect username or password. Please try again.")
-    },
-    rpcCall() {
-      this.rpc('b', 'test',{})
+      let superusers = this.databaseQuery('superuser');
+
+      if (this.email in superusers.keys() && superusers[this.email].password === this.password)
+        this.$router.push({path: "/Home"})
+      else
+        alert("Incorrect username or password. Please try again.")
     }
   }
 }

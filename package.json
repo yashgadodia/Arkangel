@@ -10,16 +10,12 @@
   },
   "dependencies": {
     "@nuxtjs/firebase": "^7.5.0",
-    "body-parser": "^1.19.0",
     "core-js": "^3.8.3",
-    "express": "^4.17.1",
     "firebase": "^8.2.9",
-    "fs": "^0.0.1-security",
-    "leaflet": "^1.7.1",
-    "net": "^1.0.2",
     "nuxt": "^2.14.12",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "vue": "^2.6.12",
+    "leaflet": "^1.7.1",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "vue-good-table": "^2.21.7",
     "vue2-leaflet": "^2.6.0"
   },

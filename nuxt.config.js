@@ -97,6 +97,7 @@ export default {
     //     }
     //   }
     // ]
+    '@nuxtjs/axios'
   ],
 
   serverMiddleware: [

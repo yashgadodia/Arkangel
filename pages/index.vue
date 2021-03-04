@@ -68,9 +68,11 @@
 <script>
 export default {
   name: "Login",
-  data: {
-    email: "",
-    password: ""
+  data: function () {
+    return {
+      email: "",
+      password: ""
+    }
   },
   components: {
 

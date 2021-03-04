@@ -19,6 +19,10 @@ export default {
   css: [
   ],
 
+  env: {
+    FIRE_ENV: process.env.FIRE_ENV
+  },
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
   ],
@@ -34,6 +38,31 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: process.env.FIRE_KEY,
+          // authDomain: '<authDomain>',
+          projectId: process.env.FIRE_PROJECTID,
+          // storageBucket: '<storageBucket>',
+          // messagingSenderId: '<messagingSenderId>',
+          // appId: '<appId>',
+          // measurementId: '<measurementId>'
+        },
+        services: {
+          // auth: false,
+          // firestore: false,
+          // functions: false,
+          // storage: false,
+          database: true,
+          // messaging: false,
+          // performance: false,
+          // analytics: false,
+          // remoteConfig: false
+        }
+      }
+    ]
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

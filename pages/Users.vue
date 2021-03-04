@@ -1,5 +1,7 @@
 <template>
-    <div></div>
+    <div>
+      {{this.databaseQuery('users')}}
+    </div>
 </template>
 
 <script>

@@ -31,6 +31,7 @@
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
               <a href="#" class="bg-blue-600 text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
               <a href="#" class="text-white hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Users</a>
+              <NuxtLink class="text-white hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to="Users">Users</NuxtLink>
               <a href="#" class="text-white hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Onboarding Requests</a>
               <a href="#" class="text-white hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reports</a>
             </div>

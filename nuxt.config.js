@@ -105,7 +105,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    // https://github.com/nuxt-community/dotenv-module/issues/11
     extend (config) {
       config.node = {
         fs: 'empty'

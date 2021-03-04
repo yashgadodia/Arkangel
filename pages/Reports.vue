@@ -10,7 +10,7 @@
         <div>Time Dispatched</div>
         <div>Time Resolved</div>
       </div>
-      <div class="pt-3" v-for="items in this.reportDetails">
+      <div class="pt-3" v-for="items in this.reportDetails" :key="item.userId">
         <report-item
           :username="items.username"
           :userId="items.userId"

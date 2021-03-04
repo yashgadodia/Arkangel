@@ -112,4 +112,32 @@ export default (context, inject) => {
 
   // Inject in Vue, context and store.
   inject('rpc', rpc);
+
+  const databaseQuery = (reference = 'users', filters) => {
+    if (!reference)
+      throw error('Oi');
+
+    let ref = this.$fire.database.ref(reference);
+
+    // FilterItem = { key: '', value: '' }
+    if (filters) {
+      filters.forEach((filterItem) => {
+        ref = ref.orderByChild(filterItem.key);
+
+        if (filterItem.value)
+          ref = ref.equalTo(filterItem.value);
+      });
+    }
+
+    let res = {}
+
+    ref.on('value', (snapshot) => {
+      res = snapshot.val();
+    });
+
+    return res;
+  };
+
+  // Inject in Vue, context and store.
+  inject('databaseQuery', databaseQuery);
 };

@@ -99,16 +99,7 @@ export default {
     // ]
   ],
 
-  serverMiddleware: [
-    { path: "/api", handler: "~/middleware/server/rest.js" },
-  ],
-
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    extend (config) {
-      config.node = {
-        fs: 'empty'
-      }
-    }
   }
 }

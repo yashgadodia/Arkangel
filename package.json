@@ -13,9 +13,15 @@
     "core-js": "^3.8.3",
     "firebase": "^8.2.9",
     "nuxt": "^2.14.12",
-    "vue": "^2.6.12"
+    "vue": "^2.6.12",
+    "leaflet": "^1.7.1",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "vue-good-table": "^2.21.7",
+    "vue2-leaflet": "^2.6.0"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^3.4.2"
+    "@nuxtjs/tailwindcss": "^3.4.2",
+    "autoprefixer": "^9",
+    "postcss": "^7"
   }
 }

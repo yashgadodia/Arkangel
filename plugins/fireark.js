@@ -8,11 +8,14 @@ Vue.mixin({
       );
     },
     rpc(target, method, payload) {
+      if (!target)
+        return { success: false, msg: "Invalid target" };
+      
       let res = {};
-      this.$fire.database.ref('rpc/' + this.uuidv4()).set({
-        target: target,
+      this.$fire.database.ref('rpc/' + target + '/' + this.uuidv4()).set({
         method: method,
-        payload: payload
+        timestamp: Date.now(),
+        payload: payload != null ? payload : {}
       })
         .catch(e => {
           res = {success: false, msg: e};

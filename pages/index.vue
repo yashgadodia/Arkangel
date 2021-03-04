@@ -22,13 +22,21 @@
         >
           GitHub
         </a>
+
+        <Button @click="rpcCall">Write to Realtime DB</Button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    rpcCall() {
+      this.rpc('b', 'test',{})
+    }
+  }
+}
 </script>
 
 <style>

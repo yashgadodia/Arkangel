@@ -26,7 +26,7 @@
           >Onboarding requests</span
         >
       </nuxt-link>
-      <nuxt-link to="/Home">
+      <nuxt-link to="/Reports">
         <span
           class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-white"
           >Reports</span

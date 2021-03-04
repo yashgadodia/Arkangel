@@ -1,3 +1,6 @@
+const isDev = process.env.NODE_ENV === 'development'
+const useEmulators = false // manually change if emulators needed
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -19,12 +22,18 @@ export default {
   css: [
   ],
 
+  database: {
+    emulatorPort: process.env.NODE_ENV === 'development' ? 9000 : undefined,
+    emulatorHost: 'localhost',
+  },
+
   env: {
     FIRE_ENV: process.env.FIRE_ENV
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '~/plugins/fireark.js' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -34,35 +43,59 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/firebase',
   ],
+
+  firebase: {
+    lazy: false,
+    config: {
+      apiKey: 'AIzaSyDa-YwgWTp2GDyVYEfv-XLb62100_HoEvU',
+      projectId: 'nuxt-fire-demo',
+      storageBucket: 'nuxt-fire-demo.appspot.com',
+      appId: '1:807370470428:web:26da98c86c3fd352',
+    },
+    onFirebaseHosting: false,
+    terminateDatabasesAfterGenerate: true,
+    services: {
+      firestore: {
+        memoryOnly: false,
+        enablePersistence: true,
+        emulatorPort: isDev && useEmulators ? 8080 : undefined,
+      },
+      storage: true,
+      database: {
+        emulatorPort: isDev && useEmulators ? 9000 : undefined,
+      }
+    },
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    [
-      '@nuxtjs/firebase',
-      {
-        config: {
-          apiKey: process.env.FIRE_KEY,
-          // authDomain: '<authDomain>',
-          projectId: process.env.FIRE_PROJECTID,
-          storageBucket: process.env.FIRE_BUCKET,
-          // messagingSenderId: '<messagingSenderId>',
-          // appId: '<appId>',
-          // measurementId: '<measurementId>'
-        },
-        services: {
-          // auth: false,
-          // firestore: false,
-          // functions: false,
-          storage: true,
-          database: true,
-          // messaging: false,
-          // performance: false,
-          // analytics: false,
-          // remoteConfig: false
-        }
-      }
-    ]
+    // [
+    //   '@nuxtjs/firebase',
+    //   {
+    //     config: {
+    //       apiKey: process.env.FIRE_KEY,
+    //       // authDomain: '<authDomain>',
+    //       projectId: process.env.FIRE_PROJECTID,
+    //       storageBucket: process.env.FIRE_BUCKET,
+    //       // messagingSenderId: '<messagingSenderId>',
+    //       // appId: '<appId>',
+    //       // measurementId: '<measurementId>'
+    //     },
+    //     services: {
+    //       // auth: false,
+    //       // firestore: false,
+    //       // functions: false,
+    //       storage: true,
+    //       database: true,
+    //       // messaging: false,
+    //       // performance: false,
+    //       // analytics: false,
+    //       // remoteConfig: false
+    //     }
+    //   }
+    // ]
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

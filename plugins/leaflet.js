@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 
 Vue.component('l-map', LMap);

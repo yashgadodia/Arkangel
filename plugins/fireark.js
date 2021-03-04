@@ -61,10 +61,12 @@ Vue.mixin({
         });
       }
 
-      let res = {}
+      let res = [];
 
       ref.on('value', (snapshot) => {
-        res = snapshot.val();
+        snapshot.forEach((innerSnapshot) => {
+          res.push(innerSnapshot);
+        });
       });
 
       return res;

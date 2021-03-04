@@ -45,7 +45,7 @@ export default {
           apiKey: process.env.FIRE_KEY,
           // authDomain: '<authDomain>',
           projectId: process.env.FIRE_PROJECTID,
-          // storageBucket: '<storageBucket>',
+          storageBucket: process.env.FIRE_BUCKET,
           // messagingSenderId: '<messagingSenderId>',
           // appId: '<appId>',
           // measurementId: '<measurementId>'
@@ -54,7 +54,7 @@ export default {
           // auth: false,
           // firestore: false,
           // functions: false,
-          // storage: false,
+          storage: true,
           database: true,
           // messaging: false,
           // performance: false,

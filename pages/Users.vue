@@ -26,7 +26,9 @@
           <user-item
           :name = "item.name"
           :phoneNumber = "item.phoneNo"
-          :EName = 'item.emergencyContacts'
+          :EName = "ename"
+          :EPhoneNumber = "ephone"
+          :ERelationship = "ers"
           >
           Hello
           </user-item>
@@ -40,14 +42,20 @@ export default {
   data: function() {
       return {
         dataset: [],
-        eContacts: []
+        eContacts: [],
+        ename: "",
+        ephone:0,
+        ers:""
       }
   },
   beforeUpdate(){
     let x = this.dataset[0]
     console.log(this.dataset);
     this.dataset.forEach(element => {
-      console.log(element.emergencyContacts);
+      console.log(element.emergencyContacts["0"].name);
+      this.ename = element.emergencyContacts["0"].name
+      this.ephone = element.emergencyContacts["0"].phoneNo
+      this.ers = element.emergencyContacts["0"].relationship
     });
   },
   async fetch(){
